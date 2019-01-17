@@ -1,8 +1,5 @@
 ![SAP HANA Academy](https://yt3.ggpht.com/-BHsLGUIJDb0/AAAAAAAAAAI/AAAAAAAAAVo/6_d1oarRr8g/s100-mo-c-c0xffffffff-rj-k-no/photo.jpg)
 # SAP HANA Security #
-### Tutorial Video Playlist ### 
-[SAP HANA Security](https://www.youtube.com/playlist?list=PLkzo92owKnVz2TJuTO9B71U7gTsG6beVJ)
-
 ## Secure Client Connections for the SAP HANA Service ##
 The SAP HANA Service on the SAP Cloud Platform only accepts secure (encrypted) connections from client tools.
 
@@ -21,7 +18,10 @@ Using the built-in security providers does have some restrictions as they cannot
 The SAP CommonCrypto Library was created by SAP to guarantee a secure compute environment regardless of the underlying platform. For on-premise SAP HANA, openSSL has been deprecated.
 
 ### Tutorial Video ### 
-[![Secure Client Connections, SAP HANA Service](https://img.youtube.com/vi/loi28PvDZVI/0.jpg)](https://youtu.be/loi28PvDZVI "[2.0 SPS 04] SAP HANA Service, Security, Secure Client Connections I - SAP HANA Academy)
+[![Secure Client Connections, SAP HANA Service](https://img.youtube.com/vi/loi28PvDZVI/0.jpg)](https://youtu.be/loi28PvDZVI "2.0 SPS 04 SAP HANA Service, Security, Secure Client Connections I - SAP HANA Academy)
+### Tutorial Video Playlist ### 
+[SAP HANA Security](https://www.youtube.com/playlist?list=PLkzo92owKnVz2TJuTO9B71U7gTsG6beVJ)
+
 
 ## Convert Root CA Certificate from .crt to .pem ##
 For platforms using openSSL (macOS and Linux), you will need to point the sslTrustStore parameter to the Certificate Authority (CA) root certificate. 
@@ -37,12 +37,12 @@ openssl x509 -inform der -in DigiCertGlobalRootCA.crt -out ~/.ssl/DigiCertGlobal
 ## HDBSQL ##
 The SAP HANA Interactive Terminal is included with every SAP HANA client. 
 You can use it quickly test the connection to the SAP HANA Service. Notwithstanding its name, interactive input is a bit cumbersome but for running scripts the tool can be handy. 
-# For Microsoft Windows
+### For Microsoft Windows
 On Microsoft Windows the built-in TLS/SSL provider will be used. No need to specify provider or trust store. 
 ```
 hdbsql -n zeus.hana.prod.eu-central-1.whitney.dbaas.ondemand.com:54321 -u system -p Initial1 -e  "SELECT VERSION FROM M_DATABASE"
 ```
-# For Linux and macOS
+### For Linux and macOS
 Make sure to include the sslprovider and ssltruststore parameters. 
 ```
 hdbsql -n zeus.hana.prod.eu-central-1.whitney.dbaas.ondemand.com:54321  -u system -p Initial1 -e -sslprovider openssl -ssltruststore ~/.ssl/DigiCertGlobalRootCA.pem  "SELECT VERSION FROM M_DATABASE"
@@ -68,7 +68,7 @@ Storing the PEM file in a .ssl directory under the user account is a convention,
 
 You can give the Data Source any name you want. Case is not important, spaces are possible between quotes but not recommended. 
 
-# For Linux
+### For Linux
 ```
 [HaaS]
 driver=/usr/sap/hdbclient/libodbcHDB.so
@@ -77,7 +77,7 @@ encrypt=Yes
 sslCryptoProvider=openssl
 sslTrustStore=/usr/sap/hdblcient/.ssl/DigiCertGlobalRootCA.pem
 ```
-# For macOS
+### For macOS
 ```
 [HaaS]
 driver=/Applications/sap/hdbclient/libodbcHDB.dylib
@@ -86,7 +86,7 @@ encrypt=Yes
 sslCryptoProvider=openssl
 sslTrustStore=/Users/JohnDoe/.ssl/DigiCertGlobalRootCA.pem
 ```
-# isql
+### isql
 Test your connection (and enter SQL) with isql. This tool is included with the unixODBC Driver Manager package. 
 You can download unixODBC for Linux and Mac from [unixODBC.org](http://www.unixodbc.org) and admire the beautiful retro early 90s web design. 
 Syntax is isql DataSourceName username password. There is no interactive prompt. Not entering a password, returns an error. 
@@ -106,14 +106,14 @@ You can test the JDBC connection on the command line. The order of the parameter
 For the built-in TLS/SSL encryption using Java you do not have to specify the provider or location of a certificate as the CA root certificate of the Java RTE/SDK is used.
 You might need to add the full path to the java executable if it is not in your %PATH% or $PATH. 
 
-# For macOS
+### For macOS
 ```
 java -jar "/Applications/sap/hdbclient/ngdbc.jar" -u user,Password1 
 -n zeus.hana.prod.eu-central-1.whitney.dbaas.ondemand.com:54321 
 -o encrypt=true -o validateCertificate=true 
 -c "SELECT VERSION FROM M_DATABASE"
 ```
-# For Windows
+### For Windows
 ```
 java -jar "C:\Program Files\sap\hdbclient\ngdbc.jar" -u user,Password1 
 -n zeus.hana.prod.eu-central-1.whitney.dbaas.ondemand.com:54321 
@@ -121,7 +121,7 @@ java -jar "C:\Program Files\sap\hdbclient\ngdbc.jar" -u user,Password1
 -c "SELECT VERSION FROM M_DATABASE"
 ```
 
-# For Windows
+### For Windows
 Sample code for the TestJDBCDriver class. Add the next-generation database client <strong>ngdbc.jar</strong> file as an external archive to your package build path.
 
 We only specify to the DriverManager to encrypt the connection <?encrypt=true>. The JVM takes care of provider and trust store. 
@@ -197,6 +197,6 @@ conn.close()
 For the documentation, see
 * [Connect to SAP HANA from Python - SAP HANA Client Interface Programming Reference for SAP HANA Service](https://help.sap.com/viewer/1efad1691c1f496b8b580064a6536c2d/Cloud/en-US/d12c86af7cb442d1b9f8520e2aba7758.html)
 
-### Documentation ### 
+## Documentation ## 
 * [Connecting to an SAP HANA Service Instance Directly from SAP HANA Clients - SAP HANA Client Interface Programming Reference for SAP HANA Service](https://help.sap.com/viewer/1efad1691c1f496b8b580064a6536c2d/Cloud/en-US/5bd9bcec690346a8b36df9161b1343c2.html)
 * [WebSockets Communication Protocol – SAP Cloud Platform, SAP HANA Service Getting Started Guide](https://help.sap.com/viewer/cc53ad464a57404b8d453bbadbc81ceb/Cloud/en-US/eeb55c2016cf4048987e890190e7f5f9.html)
