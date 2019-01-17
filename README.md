@@ -18,7 +18,9 @@ Using the built-in security providers does have some restrictions as they cannot
 The SAP CommonCrypto Library was created by SAP to guarantee a secure compute environment regardless of the underlying platform. For on-premise SAP HANA, openSSL has been deprecated.
 
 ### Tutorial Video ### 
-[![Secure Client Connections, SAP HANA Service](https://img.youtube.com/vi/loi28PvDZVI/0.jpg)](https://youtu.be/loi28PvDZVI "2.0 SPS 04 SAP HANA Service, Security, Secure Client Connections I - SAP HANA Academy)
+[![Secure Client Connections](https://img.youtube.com/vi/loi28PvDZVI/0.jpg)](https://www.youtube.com/watch?v=loi28PvDZVI "Secure Client Connections")
+
+
 ### Tutorial Video Playlist ### 
 [SAP HANA Security](https://www.youtube.com/playlist?list=PLkzo92owKnVz2TJuTO9B71U7gTsG6beVJ)
 
